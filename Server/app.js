@@ -3,6 +3,7 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
+const session = require("express-session");
 const favicon = require("serve-favicon");
 const hbs = require("hbs");
 const mongoose = require("mongoose");
@@ -38,17 +39,17 @@ app.use(cookieParser());
 
 // CORS setup
 
-let whiteList = [
-  'http://localhost:4200'
+var whitelist = [
+  'http://localhost:4200',
 ];
-let corsOptions = {
-  origin: (origin, callback) => {
-    let originIsWhiteListed = whiteList.indexOf(origin) !== -1
-    callback (null, originIsWhiteListed)
+var corsOptions = {
+  origin: function(origin, callback){
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
   },
   credentials: true
-}
-app.use('cors');
+};
+app.use(cors(corsOptions));
 
 // Express View engine setup
 
@@ -70,5 +71,7 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
 app.use("/", index);
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
 
 module.exports = app;
