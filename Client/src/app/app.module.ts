@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule} from '@angular/router';
 import { routes } from './routes/routes';
-import { Http } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 /* import { FileSelectDirective } from 'ng2-file-upload'; */
 import { AppComponent } from './app.component';
@@ -32,7 +32,7 @@ import { LibraryEditComponent } from './components/library-edit/library-edit.com
   ],
   imports: [
     BrowserModule,
-    Http,
+    HttpClientModule,
     NgModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,

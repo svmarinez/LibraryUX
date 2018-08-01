@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
+/* import { HttpClientModule } from '@angular/common/http'; */
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { LoginComponent } from '../login/login.component';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private suc: SignupComponent, private lic: LoginComponent) {
+  constructor( /* private http: HttpClientModule,  */private suc: SignupComponent, private lic: LoginComponent) {
   }
   ngOnInit() { }
 
