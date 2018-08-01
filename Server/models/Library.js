@@ -24,21 +24,25 @@ const librarySchema = new mongoose.Schema({
     required: true
   },
   admin: {
-    type: Array,
-    default: []
+    type: String,
+    required: true
   },
-  adminAnswers: {
-    type: Array,
-    default: []
-  },
+  adminAnswers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Form"
+    }
+  ],
   employees: {
     type: Array,
     default: []
   },
-  employeeAnswers: {
-    type: Array,
-    default: []
-  }/* ,
+  employeeAnswers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Form"
+    }
+  ], /* ,
   location: {
     type: {
       type: String
@@ -47,10 +51,10 @@ const librarySchema = new mongoose.Schema({
   } */
 });
 
-LibrarySchema.index({
+/* LibrarySchema.index({
     location: "2dsphere"
   });
-  
-  
-const Library = mongoose.model("Library", LibrarySchema);
-module.exports = LibrarySchema;
+ */
+
+const Library = mongoose.model("Library", librarySchema);
+module.exports = librarySchema;

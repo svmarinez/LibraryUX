@@ -3,6 +3,7 @@ const passport = require("passport");
 const authRoutes = express.Router();
 const User = require("../models/User");
 
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 20;
@@ -91,6 +92,7 @@ authRoutes.get("/edit/:id", (req, res) => {
   });
 
 // DELETE USER  ||  cruD
+
 authRoutes.get("/delete/:id", (req, res) => {
     User.findByIdAndRemove(req.params.id)
       .then(() => {

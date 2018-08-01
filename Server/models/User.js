@@ -21,7 +21,10 @@ const userSchema = new mongoose.Schema({
       employee: { type: Boolean, default: true }
     }
   ],
-  libraryName: {type: Schema.Types.ObjectId, ref: 'Library'}
+  libraryName: {
+    type: Schema.Types.ObjectId,
+    ref: "Library"
+  }
 });
 
 const User = mongoose.model("User", userSchema);
