@@ -13,9 +13,9 @@ import { UxpagesComponent } from './components/uxpages/uxpages.component';
 import { FormComponent } from './components/form/form.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
-import { DatapushService } from './services/datapush.service';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LibraryEditComponent } from './components/library-edit/library-edit.component';
+import { SessionService } from './services/session.service';
 
 @NgModule({
   declarations: [
@@ -33,12 +33,11 @@ import { LibraryEditComponent } from './components/library-edit/library-edit.com
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [DatapushService],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

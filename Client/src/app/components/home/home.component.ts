@@ -12,7 +12,7 @@ import { LoginComponent } from '../login/login.component';
 
 export class HomeComponent implements OnInit {
 
-  constructor( /* private http: HttpClientModule,  */private suc: SignupComponent, private lic: LoginComponent) {
+  constructor( /* private http: HttpClientModule,  */) {
   }
   ngOnInit() { }
 
