@@ -21,6 +21,9 @@ export class SignupComponent implements OnInit {
   signup() {
     // console.log(this.Password);
     this.ss.signup(this.email, this.Password, this.name).subscribe((user: any) => {
+      this.email = '';
+      this.Password = '';
+      this.name = '';
       this.r.navigate(['/']);
     });
   }

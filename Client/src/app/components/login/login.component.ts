@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(email: string, password: string) {
-    this.ss.login(email, password).subscribe((user: any) => {
+  login(email: string, Password: string) {
+    this.ss.login(email, Password).subscribe((user: any) => {
       this.r.navigate(['/']);
     });
   }
