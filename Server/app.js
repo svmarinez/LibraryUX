@@ -11,6 +11,7 @@ const path = require("path");
 const cors = require("cors");
 const MongoStore = require("connect-mongo")(session);
 const flash = require('connect-flash');
+const passport = require('passport');
 
 mongoose.Promise = Promise;
 mongoose
@@ -27,13 +28,6 @@ const debug = require("debug")(
   `${app_name}:${path.basename(__filename).split(".")[0]}`
 );
 const app = express();
-
-// Middleware Setup
-app.use(logger("dev"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 // CORS setup
 
 var whitelist = ["http://localhost:4200"];
@@ -45,6 +39,13 @@ var corsOptions = {
   credentials: true
 };
 app.use(cors(corsOptions));
+
+// Middleware Setup
+app.use(logger("dev"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 
 // Express View engine setup
 
@@ -62,16 +63,20 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 
-// require("passport")(app);
 
-app.use(
-  session({
-    secret: "irongenerator",
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-);
+app.use(session({
+  secret: 'captainredcheeto',
+  resave: true,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 2419200000
+  },
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+
+require("./passport")(app);
+
 app.use(flash());
 app.use((req, res, next) => {
   app.locals.title = "BibliUX";

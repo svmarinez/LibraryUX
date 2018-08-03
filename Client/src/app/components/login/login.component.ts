@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { SessionService } from '../../services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,15 @@ import { FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ss: SessionService, private r: Router) { }
 
   ngOnInit() {
+  }
+
+  login(email: string, password: string) {
+    this.ss.login(email, password).subscribe((user: any) => {
+      this.r.navigate(['/']);
+    });
   }
 
 }

@@ -8,5 +8,5 @@
   <p>Password
     <input type="password" name="password" [value]="Password" required />
   </p>
-  <button>Login</button>
+  <button (click) = "login(email, password)">Login</button>
 </form>

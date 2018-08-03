@@ -7,13 +7,20 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
+
 export class SignupComponent implements OnInit {
+
+  email: string;
+  Password: string;
+  name: string;
+
   constructor(private ss: SessionService, private r: Router) {}
 
   ngOnInit() {}
 
-  signup(email: string, name: string, password: string, hasRole: boolean ) {
-    this.ss.signup(email, password).subscribe((user: any) => {
+  signup() {
+    // console.log(this.Password);
+    this.ss.signup(this.email, this.Password, this.name).subscribe((user: any) => {
       this.r.navigate(['/']);
     });
   }

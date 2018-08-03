@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LibraryEditComponent } from './components/library-edit/library-edit.component';
 import { SessionService } from './services/session.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SessionService } from './services/session.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     FormsModule
