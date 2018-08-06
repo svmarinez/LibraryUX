@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from '../../services/map.service';
 
 @Component({
   selector: 'app-lib-home',
