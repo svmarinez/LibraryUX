@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UxpagesComponent } from './uxpages.component';
+import { LibHomeComponent } from './lib-home.component';
 
-describe('UxpagesComponent', () => {
-  let component: UxpagesComponent;
-  let fixture: ComponentFixture<UxpagesComponent>;
+describe('LibHomeComponent', () => {
+  let component: LibHomeComponent;
+  let fixture: ComponentFixture<LibHomeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UxpagesComponent ]
+      declarations: [ LibHomeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UxpagesComponent);
+    fixture = TestBed.createComponent(LibHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

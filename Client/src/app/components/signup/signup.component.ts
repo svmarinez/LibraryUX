@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
+import { FormsModule, EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -13,6 +14,7 @@ export class SignupComponent implements OnInit {
   email: string;
   Password: string;
   name: string;
+  hasRole: ['Employee', 'Admin', 'SuperAdmin'];
 
   constructor(private ss: SessionService, private r: Router) {}
 
@@ -24,7 +26,8 @@ export class SignupComponent implements OnInit {
       this.email = '';
       this.Password = '';
       this.name = '';
-      this.r.navigate(['/']);
+
+      this.r.navigate(['/login']);
     });
   }
 

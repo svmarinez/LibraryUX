@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   constructor(private ss: SessionService, private r: Router) { }
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   login(email: string, Password: string) {
     this.ss.login(email, Password).subscribe((user: any) => {
-      this.r.navigate(['/']);
+      this.r.navigate(['/user/:id']);
     });
   }
 
