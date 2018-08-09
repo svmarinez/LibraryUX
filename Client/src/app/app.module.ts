@@ -21,6 +21,8 @@ import { LibraryAddComponent } from './components/library-add/library-add.compon
 import { LibHomeComponent } from './components/lib-home/lib-home.component';
 import { environment } from '../environments/environment';
 import { MapComponent } from './components/map/map.component';
+import { PushbackService } from './services/pushback.service';
+import { LibrarySaveService } from './services/library-save.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { MapComponent } from './components/map/map.component';
       libraries: ['places']
     })
   ],
-  providers: [SessionService],
+  providers: [SessionService, PushbackService, LibrarySaveService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

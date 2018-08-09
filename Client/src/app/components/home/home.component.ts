@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
-/* import { HttpClientModule } from '@angular/common/http'; */
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,15 @@ import { LoginComponent } from '../login/login.component';
 
 export class HomeComponent implements OnInit {
 
-  constructor( /* private http: HttpClientModule,  */) {
+  constructor( private router: Router) {
   }
   ngOnInit() { }
+
+  signup() {
+    this.router.navigate(['/signup']);
+  }
+  login() {
+    this.router.navigate(['/login']);
+  }
 
 }

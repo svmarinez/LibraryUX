@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LibrarySaveService } from '../../services/library-save.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lib-home',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lib-home.component.scss']
 })
 export class LibHomeComponent implements OnInit {
-
-  constructor() { }
+  formsLibrary;
+  constructor(public ls: LibrarySaveService, public router: ActivatedRoute) { }
 
   ngOnInit() {
+    this.router.params.subscribe(params => {
+      this.ls.formsLibrary(params.id).subscribe(formsLibrary => {this.formsLibrary = formsLibrary; console.log(formsLibrary) )};
+    });
   }
 
 }

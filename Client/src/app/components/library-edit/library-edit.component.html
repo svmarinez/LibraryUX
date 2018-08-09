@@ -1,3 +1,19 @@
-<p>
-  library-edit works!
-</p>
+<form class="form-control" *ngIf="user">
+  <p>Name
+    <input type="text" name="Name" [(ngModel)]="Name" placeholder="{{Library.Name}}" required>
+  </p><br/>
+  <p>City
+    <input type="text" name="City" [(ngModel)]="City" placeholder="{{Library.City}}">
+  </p><br/>
+  <p>Province
+    <input type="text" name="Province" [(ngModel)]="Province" placeholder="{{Library.Province}}">
+  </p><br/>
+  <p>Country
+    <input type="text" name="Country" [(ngModel)]="Country" placeholder="{{Library.Country}}">
+  </p><br/>
+  <p>Location</p>
+  <app-map></app-map>
+
+  <button (click) = "delete()" class="btn btn-outline-danger">Delete Library</button>
+  <button (click) = "edit()" class="btn btn-success">Edit Library</button>
+</form>

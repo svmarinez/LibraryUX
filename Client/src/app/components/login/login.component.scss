@@ -1,0 +1,26 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    background-color: rgba(145, 145, 145, 0.80);
+    border-radius: 2%;
+    box-shadow: -5px 5px 5px 2px rgba(194,188,194,1);
+
+    .form-control {
+        margin: 2% auto;
+        width: 80%;
+        
+        label {
+            margin: 0 auto;
+            width: 40%;
+            display: inline-flex;
+            text-align: right;
+        }
+        input {
+            margin: 0 5%;
+            width: 50%;
+            align-items: left;
+        }
+    }    
+}

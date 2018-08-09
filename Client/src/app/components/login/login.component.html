@@ -1,12 +1,11 @@
-<p>
-  login works!
-</p>
-<form class="form-control">
-  <p>Email
+<form class="form-group">
+  <div class="form-control">
+    <label>Email:</label>
     <input type="text" name="email" [(ngModel)]="email" required />
-  </p>
-  <p>Password
+  </div>
+  <div class="form-control">
+    <label>Password:</label>
     <input type="password" name="password" [(ngModel)]="Password" required />
-  </p>
-  <button (click) = "login(email, Password)" class="btn btn-success">Login</button>
+  </div>
+  <button (click)="login(email, Password)" class="btn btn-success">Login</button>
 </form>

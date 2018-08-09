@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   login(email: string, Password: string) {
     this.ss.login(email, Password).subscribe((user: any) => {
-      this.r.navigate(['/user/:id']);
+      this.r.navigate(['/user']);
     });
   }
 

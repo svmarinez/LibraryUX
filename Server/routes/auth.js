@@ -18,7 +18,6 @@ const login = (req, user) => {
   })
 }
 
-
 // SIGNUP
 router.post('/signup', (req, res, next) => {
 
@@ -79,5 +78,4 @@ router.get('/logout', (req,res) => {
 router.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 })
-
 module.exports = router;

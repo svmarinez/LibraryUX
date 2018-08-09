@@ -1,103 +1,40 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const formSchema = new mongoose.Schema({
-  answer1: {
-    type: Number,
-    default: 0
+const formSchema = new Schema({
+  form: [
+    {
+      question: {
+        type: String,
+        enum: [
+          "Name",
+          "Address",
+          "Contact Info",
+          "Opening Hours",
+          "Available Books",
+          "Available Services",
+          "Directions to Library",
+          "Complaint Link",
+          "Social Media Links",
+          "Library Events",
+          "Public Library System Events",
+          "Link to Public Library System"
+        ]
+      },
+        check: { type: Boolean, default: false},
+        comment: String,
+        value: { type: Number, enum: [1, 2, 3, 4, 5, 0], default: 0 }
+      
+    }
+  ],
+  libraryName: {
+    type: Schema.Types.ObjectId,
+    ref: "Library"
   },
-  comment1: {
-    type: String,
-    default: null
-  },
-  answer2: {
-    type: Number,
-    default: 0
-  },
-  comment2: {
-    type: String,
-    default: null
-  },
-  answer3: {
-    type: Number,
-    default: 0
-  },
-  comment3: {
-    type: String,
-    default: null
-  },
-  answer4: {
-    type: Number,
-    default: 0
-  },
-  comment4: {
-    type: String,
-    default: null
-  },
-  answer5: {
-    type: Number,
-    default: 0
-  },
-  comment5: {
-    type: String,
-    default: null
-  },
-  answer6: {
-    type: Number,
-    default: 0
-  },
-  comment6: {
-    type: String,
-    default: null
-  },
-  answer7: {
-    type: Number,
-    default: 0
-  },
-  comment7: {
-    type: String,
-    default: null
-  },
-  answer8: {
-    type: Number,
-    default: 0
-  },
-  comment8: {
-    type: String,
-    default: null
-  },
-  answer9: {
-    type: Number,
-    default: 0
-  },
-  comment9: {
-    type: String,
-    default: null
-  },
-  answer10: {
-    type: Number,
-    default: 0
-  },
-  comment10: {
-    type: String,
-    default: null
-  },
-  answer11: {
-    type: Number,
-    default: 0
-  },
-  comment11: {
-    type: String,
-    default: null
-  },
-  answer12: {
-    type: Number,
-    default: 0
-  },
-  comment12: {
-    type: String,
-    default: null
+  _author: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
   }
 });
 const Form = mongoose.model("Form", formSchema);
-module.exports = formSchema;
+module.exports = Form;

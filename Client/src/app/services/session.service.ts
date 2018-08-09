@@ -3,10 +3,11 @@ import { Http, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { NULL_INJECTOR } from '@angular/core/src/render3/component';
 
 const { BASEURL } = environment;
 
-interface UserObject {
+export interface UserObject {
   email: string;
   name: string;
   password: string;
@@ -54,6 +55,24 @@ export class SessionService {
       }),
       catchError(e => of(this.errorHandler(e)))
     );
+  }
+
+  update() {
+    return this.http
+    .patch(`${BASEURL}/auth/user/:id`, this.options)
+    .pipe(
+      map((res: Response) => {
+        this.user = res.json();
+        console.log(`Updated ${this.user}`);
+      }),
+      catchError(e => of(this.errorHandler(e)))
+    );
+  }
+
+  delete() {
+    return this.http
+    .delete(`${BASEURL}/auth/user/:id`, this.options),
+    catchError(e => of(this.errorHandler(e)));
   }
 
   logout() {

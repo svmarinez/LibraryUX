@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   email: {
     type: String,
     required: [true, "Your email is required"]
@@ -13,13 +13,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Your password is required"]
   },
-  hasRole: [
+  hasRole: 
     {
       superAdmin: { type: Boolean, default: false },
       admin: { type: Boolean, default: false },
       employee: { type: Boolean, default: true }
     }
-  ],
+  ,
   libraryName: {
     type: Schema.Types.ObjectId,
     ref: "Library"

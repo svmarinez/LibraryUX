@@ -2,9 +2,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,400,700');
 
-*, body {
+body {
     font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    background-image: url('http://jmasoc.com/wp-content/uploads/2016/06/2012_CasaDelLector_foto11_JMASOC.jpg');
+    background-size: cover;
     h1 {
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        margin-top: 40px;
+        text-align: center;
     }
 }

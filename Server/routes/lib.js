@@ -1,71 +1,48 @@
 const express = require("express");
 const passport = require("passport");
 const libRoutes = express.Router();
-const multer = require("multer");
 const User = require("../models/User");
 const Library = require("../models/Library");
+const Form = require("../models/Form");
+
+
 
 // Retreive and Create the Library  ||  CRud
 
-libRoutes.get("/lib/list", (req, res) => {
-    if (User.hasRole == "Admin" || User.hasRole == "SuperAdmin"){
-        Library.find().then(Libraries => {
-            res.render("lib/list", { libraries });
-          });
-    }
-})
-
-libRoutes.get("/lib/new", (req, res, next) => {
-  if (User.hasRole == "Admin" || User.hasRole == "SuperAdmin") {
-    res.render("lib/new");
-  }
+libRoutes.get("/list", (req, res) => {
+  Library.find().then(libraries => {
+    res.json(libraries);
+  });
 });
 
-libRoutes.post("/lib/new", (req, res, next) => {
-  if (User.hasRole == "Admin" || User.hasRole == "SuperAdmin") {
-    const { name, country, province, city } = req.body;
-    const admin = req.user.id;
-    // const image = `/uploads/${req.file.filename}`;
-    /* const location = {
-      type: "Point",
-      coordinates: [req.body.lat, req.body.lng]
-    } ;*/
-    if (
-      name === "" ||
-      country === "" ||
-      province === "" ||
-      city === "" ||
-      admin === "" ||
-      image === "" /* ||
-      location === "" */
-    ) {
-      res.render("lib/new", {
-        message: "Please fill all the required fields"
-      });
-      return;
-    }
-    Library.findOne({ name }, "name", (err, user, next) => {
-        const newLibrary = new Library({
-          name,
-          country,
-          province,
-          city,
-          admin,
-          image/* ,
-          location */
-        });
-        newLibrary
-          .save()
-          .then(() => {
-            res.redirect("/lib/list");
-          })
-          .catch(err => {
-            req.flash("error", err.message);
-            res.redirect("/lib/new");
-          });
-      });
+libRoutes.post("/new", (req, res) => {
+  const { name, country, province, city, location } = req.body.library;
 
-  }
+  Library.findOne({ name }, "name", (err, user, next) => {
+    const newLibrary = new Library({
+      name,
+      country,
+      province,
+      city,
+      location
+    });
+    newLibrary
+      .save()
+      .then(library => {
+         console.log(library)
+        res.json(library);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
 });
+
+libRoutes.get("/:id", (req, res) => {
+    Form.find({libraryName:req.params.id})
+    .populate("libraryName")
+    .then(formsLibrary => res.json(formsLibrary))
+    .catch(err => res.json(err));
+  });
 
 module.exports = libRoutes;

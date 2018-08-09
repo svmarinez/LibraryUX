@@ -1,3 +1,26 @@
-<p>
-  user-edit works!
-</p>
+<h2>Edit your information</h2>
+
+<div class="form-group" *ngIf="user">
+  <div class="form-control">
+    <label> Email: </label>
+    <input type="text" name="email" [(ngModel)]="email" placeholder="" minlength="6" required>
+  </div>
+  <div class="form-control">
+    <label> Name: </label>
+    <input type="text" name="name" [(ngModel)]="name" placeholder="" minlength="3" required>
+  </div>
+  <div class="form-control">
+    <label> Password: </label>
+    <input type="password" name="password" [(ngModel)]="Password" placeholder="· · · · · ·" minlength="6" required>
+  </div>
+  <div class="form-control">
+    <label> Confirm Password: </label>
+    <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" placeholder="· · · · · ·" minlength="6" required>
+  </div>
+  <div class="form-control" id="radio">
+    <input type="checkbox" name="hasRole" [(ngModel)]="Employee" value="Employee"> Employee
+    <input type="checkbox" name="hasRole" [(ngModel)]="Admin" value="Admin"> Admin
+  </div>
+</div>
+
+<button class="btn btn-outline-success btn-lg" [routerLink] = "['/user']">Home</button>

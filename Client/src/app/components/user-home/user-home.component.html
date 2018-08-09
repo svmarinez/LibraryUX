@@ -1,41 +1,17 @@
-<h1 *ngIf="user"> Welcome {{name}}</h1>
-
-<div *ngIf="Employee">
+<div class="container" *ngIf="user">
   <div class="user-details col col-md-6">
-    <p>Email: {{user.email}}</p>
-    <p>Role: {{user.hasRole}}</p>
-    <p>Library: {{user.libraryName}}</p>
+    <p>Welcome,{{user.name}}!</p>
+    <p>Registered email:{{user.email}}</p>
   </div>
-  <button class="uxHome btn btn-primary-dark btn-lg btn-huge">Learn About the Importance of UX</button>
-  <button class="survey btn btn-primary-dark btn-lg btn-huge">Evaluate Your Library's Webpage</button>
-</div>
-<div *ngIf="Admin">
-  <div class="user-details col col-md-4">
-    <p>Email: {{user.email}}</p>
-    <p>Role: {{user.hasRole}}</p>
-    <p>Library: {{user.libraryName}}</p>
-    <p>Employees: 
-      <ul>
-        <li *ngFor="let name of Library.employees">{{Employee.name}}</li>
-      </ul>
-    </p>
-  </div>
-  <div class="admin-stats col col-md-4"></div>
-  <div class="buttonmenu col col-md-4">
-    <button class="addLib btn btn-primary-dark btn-lg btn-huge">Add a Library</button>
-    <button class="uxHome btn btn-primary-dark btn-lg btn-huge">Learn About the Importance of UX</button>
-    <button class="survey btn btn-primary-dark btn-lg btn-huge">Evaluate Your Library's Webpage</button>
-  </div>
+  <div class="button-menu">
+    <button class="addLib btn btn-primary-dark btn-lg btn-huge" [routerLink]= "['/user/edit']">Edit user info</button>
+    <button class="addLib btn btn-primary-dark btn-lg btn-huge" [routerLink]= "['/libAdd']">Add a library</button>
+    <button class="uxHome btn btn-primary-dark btn-lg btn-huge" [routerLink]= "['/uxHome']">Learn about the importance of UX</button>
 
-</div>
-<div *ngIf="SuperAdmin">
-  <canvas class="libquantitychart"></canvas>
-  <div class="averages">
-    <canvas></canvas>
-    <canvas></canvas>
-    <canvas></canvas>
-    <canvas></canvas>
+    <button class="btn btn-outline-warning btn-lg" (click)="logout()">Log out</button>
   </div>
-</div>
-
-<a (click)="logout()">Log Out</a>
+  <div *ngFor = "let library of libraries">
+    <p>Library name: {{library.name}}</p>
+    <button class="survey btn btn-primary-dark btn-lg btn-huge" [routerLink]= "['/survey', library._id]">Evaluate your library's webpage</button>
+    <button class="survey btn btn-primary-dark btn-lg btn-huge" [routerLink]= "['/lib', library._id]">Looklibrary's webpage</button>
+  </div>

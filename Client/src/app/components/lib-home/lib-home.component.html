@@ -1,3 +1,11 @@
-<p>
-  lib-home works!
-</p>
+<app-map></app-map>
+<div *ngIf="formsLibrary">
+
+    <div *ngFor="let form of formsLibrary; let i of index">
+        <div *ngFor="let f of form.form">
+            <p>{{f.question}}</p>
+            <p>{{f.value}}</p>
+            <p>{{f.comment}}</p>
+        </div>
+    </div>
+</div>

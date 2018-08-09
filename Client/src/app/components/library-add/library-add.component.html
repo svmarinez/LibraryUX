@@ -1,3 +1,23 @@
-<p>
-  library-add works!
-</p>
+<form class="form-group" *ngIf="user">
+  <div class="form-control">
+    <label>Name</label>
+    <input type="text" name="Name" [(ngModel)]="library.name" placeholder="Casa Del Lector" required>
+  </div>
+  <div class="form-control">
+    <label>City</label>
+    <input type="text" name="City" [(ngModel)]="library.city" placeholder="Madrid">
+  </div>
+  <div class="form-control">
+    <label>Province</label>
+    <input type="text" name="Province" [(ngModel)]="library.province" placeholder="Comunidad de Madrid">
+  </div>
+  <div class="form-control">
+    <label>Country</label>
+    <input type="text" name="Country" [(ngModel)]="library.country" placeholder="Spain">
+  </div>
+  <div class="form-control">
+    <label>Location</label>
+  </div>
+  <app-map></app-map>
+</form>
+<button (click)="add()" class="btn btn-success">Sign Up</button>

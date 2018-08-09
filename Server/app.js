@@ -11,11 +11,10 @@ const path = require("path");
 const cors = require("cors");
 const MongoStore = require("connect-mongo")(session);
 const flash = require('connect-flash');
-const passport = require('passport');
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(process.env.DBURL)
+  .connect(process.env.DBURL, {useMongoClient:true})
   .then(() => {
     console.log("Connected to Mongo!");
   })
@@ -79,7 +78,7 @@ require("./passport")(app);
 
 app.use(flash());
 app.use((req, res, next) => {
-  app.locals.title = "BibliUX";
+  app.locals.title = "BiblioUX";
   res.locals.user = req.user;
   next();
 });
@@ -90,7 +89,8 @@ const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 const libRoutes = require("./routes/lib");
 app.use("/lib", libRoutes);
-/* const formRoutes = require("./routes/form");
-app.use("/form", formRoutes)
- */
+const formRoutes = require("./routes/form");
+app.use("/form", formRoutes);
+const user = require("./routes/user");
+app.use("/user", user);
 module.exports = app;

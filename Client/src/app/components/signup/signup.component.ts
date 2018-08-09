@@ -14,21 +14,28 @@ export class SignupComponent implements OnInit {
   email: string;
   Password: string;
   name: string;
-  hasRole: ['Employee', 'Admin', 'SuperAdmin'];
+  confirmPassword: string;
+  errorEmail: Boolean;
+  errorConfirmPassword: Boolean;
 
   constructor(private ss: SessionService, private r: Router) {}
 
   ngOnInit() {}
 
   signup() {
-    // console.log(this.Password);
-    this.ss.signup(this.email, this.Password, this.name).subscribe((user: any) => {
-      this.email = '';
-      this.Password = '';
-      this.name = '';
-
-      this.r.navigate(['/login']);
-    });
-  }
-
+    if (!this.email.includes('@')) {
+      this.errorEmail = true;
+    } else {
+      if (this.Password === this.confirmPassword) {
+        this.ss.signup(this.email, this.Password, this.name).subscribe((user: any) => {
+          this.email = '';
+          this.Password = '';
+          this.name = '';
+          this.r.navigate(['/login']);
+        });
+      } else {
+        this.errorConfirmPassword = true;
+      }
+      }
+    }
 }
