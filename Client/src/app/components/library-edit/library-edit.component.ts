@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./library-edit.component.scss']
 })
 export class LibraryEditComponent implements OnInit {
-
+  user;
   constructor() { }
 
   ngOnInit() {

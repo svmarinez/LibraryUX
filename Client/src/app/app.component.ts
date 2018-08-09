@@ -9,6 +9,4 @@ import { environment } from '../environments/environment';
 
 export class AppComponent {
   title = 'BIBLIO-UX';
-  baseUrl = environment.BASEURL;
-  apiKey = environment.apiKey;
 }

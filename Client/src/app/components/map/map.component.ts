@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
   public longitude = 1;
   public searchControl: FormControl;
   public zoom: number;
-
+  passive;
   @ViewChild('search') public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {}

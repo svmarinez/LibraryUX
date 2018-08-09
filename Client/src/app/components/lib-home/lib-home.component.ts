@@ -13,7 +13,7 @@ export class LibHomeComponent implements OnInit {
 
   ngOnInit() {
     this.router.params.subscribe(params => {
-      this.ls.formsLibrary(params.id).subscribe(formsLibrary => {this.formsLibrary = formsLibrary; console.log(formsLibrary) )};
+      this.ls.formsLibrary(params.id).subscribe(formsLibrary => this.formsLibrary = formsLibrary);
     });
   }
 
