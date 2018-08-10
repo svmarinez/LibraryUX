@@ -3,9 +3,9 @@
 
     <div *ngFor="let form of formsLibrary; let i of index">
         <div *ngFor="let f of form.form">
-            <p>{{f.question}}</p>
-            <p>{{f.value}}</p>
-            <p>{{f.comment}}</p>
+            <ul>{{f.question}}</ul>
+            <li>{{f.value}}</li>
+            <li>{{f.comment}}</li>
         </div>
     </div>
 </div>

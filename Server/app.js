@@ -93,4 +93,7 @@ const formRoutes = require("./routes/form");
 app.use("/form", formRoutes);
 const user = require("./routes/user");
 app.use("/user", user);
+app.use((req,res) => {
+  res.sendFile(__dirname+'/public/index.html')
+})
 module.exports = app;

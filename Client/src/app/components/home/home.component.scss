@@ -1,15 +1,16 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 50%;
-    background-color: rgba(145, 145, 145, 0.80);
-    margin-top: 3%;
+    width: 20%;
+    height: 20%;
+    margin-top: 88px;
 
     button {
-        margin: 80px;   
+        margin: 50px; 
+        letter-spacing: 3px;  
+        text-transform: uppercase;
     }
     
 }

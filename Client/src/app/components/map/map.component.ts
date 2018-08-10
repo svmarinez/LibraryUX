@@ -1,6 +1,12 @@
 /// <reference types='googlemaps' />
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl} from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  NgZone,
+  OnInit,
+  ViewChild
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MapsAPILoader, LatLng, LatLngLiteral } from '@agm/core';
 
 @Component({
@@ -15,7 +21,8 @@ export class MapComponent implements OnInit {
   public searchControl: FormControl;
   public zoom: number;
   passive;
-  @ViewChild('search') public searchElementRef: ElementRef;
+  @ViewChild('search')
+  public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {}
 
@@ -87,8 +94,14 @@ export interface MapOptions {
 }
 
 export interface InfoWindow {
-  getContent(): string|Node;
+  getContent(): string | Node;
   getPosition(): LatLng;
-  setContent(content: string|Node): void;
+  setContent(content: string | Node): void;
   setPosition(position: LatLngLiteral): void;
 }
+/* export interface Marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
+} */
